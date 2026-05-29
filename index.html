@@ -6,505 +6,404 @@
 <title>Quem pode violentar? Como ordens criminais moldam a violência contra a mulher</title>
 <style>
 :root {
-  --primary: #1e3a5f;
-  --accent: #2563eb;
-  --green: #16a34a;
-  --red: #dc2626;
-  --yellow-bg: #fef9c3;
-  --yellow-border: #fde047;
-  --green-bg: #f0fdf4;
-  --green-border: #86efac;
-  --blue-bg: #eff6ff;
-  --blue-border: #bfdbfe;
-  --text: #111827;
-  --muted: #6b7280;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --border: #e5e7eb;
+  --red: #e3120b;        /* vermelho de marca */
+  --blue: #006ba2;       /* azul (Estado) */
+  --teal: #3ebcd2;
+  --ink: #121212;
+  --muted: #6e6e6e;
+  --light: #a8a8a8;
+  --rule: #121212;       /* régua forte */
+  --rule-soft: #d9d9d9;  /* régua fina */
+  --bg: #ffffff;
+  --chart-bg: #e9eef2;   /* fundo de gráfico */
+  --tint-red: #fbe9e8;
+  --tint-blue: #eaf2f6;
+  --serif: Georgia, 'Times New Roman', Times, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--serif);
   background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  padding: 1rem;
-  max-width: 600px;
+  color: var(--ink);
+  line-height: 1.55;
+  padding: 1.1rem 1.1rem 0;
+  max-width: 620px;
   margin: 0 auto;
+  -webkit-text-size-adjust: 100%;
 }
+
+/* ── ETIQUETA VERMELHA (marca de gráfico) ── */
+.tag { width: 34px; height: 6px; background: var(--red); }
 
 /* ── HEADER ── */
-header { padding: 1.5rem 0 0.75rem; }
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
+header { padding-top: 0.4rem; }
+header .tag { margin-bottom: 0.85rem; }
+.kicker-row {
+  font-family: var(--sans);
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--red);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 1.8s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+h1 {
+  font-family: var(--serif);
+  font-size: 1.75rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.deck {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.35;
+  color: #4a4a4a;
+  font-weight: 400;
   margin-bottom: 0.9rem;
 }
-.badge-andamento { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.8s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-h1 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--primary);
-  line-height: 1.35;
-  margin-bottom: 0.6rem;
-}
-.meta { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-.meta strong { color: var(--primary); font-weight: 600; }
+.byline { font-family: var(--sans); font-size: 0.8rem; color: var(--ink); font-weight: 600; }
+.byline-sub { font-family: var(--sans); font-size: 0.74rem; color: var(--muted); margin-top: 0.1rem; }
+.byline-sub strong { color: var(--ink); }
+.rule-strong { border-top: 2px solid var(--rule); margin: 1rem 0 0; }
 
-hr { border: none; border-top: 1px solid var(--border); margin: 1.1rem 0; }
-
-/* ── SECTION LABELS ── */
-.section-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
+/* ── SEÇÕES ── */
+section { padding-top: 1rem; margin-bottom: 1.5rem; }
+.kicker {
+  font-family: var(--sans);
+  font-size: 0.66rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--red);
   margin-bottom: 0.7rem;
 }
-section { margin-bottom: 1.6rem; }
 
-/* ── CALLOUT / CITAÇÃO ── */
-.callout {
-  font-size: 0.92rem;
-  font-style: italic;
-  color: #1e3a5f;
-  border-left: 3px solid var(--accent);
-  padding: 0.65rem 0.9rem;
-  background: var(--blue-bg);
-  border-radius: 0 8px 8px 0;
-  line-height: 1.65;
+/* ── PULL QUOTE (definições-âncora) ── */
+.pull {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 4px solid var(--red);
+  padding: 0.15rem 0 0.15rem 0.95rem;
 }
 
-/* ── FRAME TEXT / LEAD ── */
-.lead-line { font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 0.7rem; }
-.frame-text { font-size: 0.9rem; color: #374151; line-height: 1.6; margin-bottom: 0.7rem; }
+/* ── NOTAS / PROSA AUXILIAR ── */
+.note { font-family: var(--serif); font-size: 0.88rem; color: #3a3a3a; line-height: 1.5; margin-top: 0.7rem; }
+.lead { font-family: var(--serif); font-size: 0.96rem; font-weight: 700; color: var(--ink); margin-bottom: 0.7rem; }
+.frame { font-family: var(--serif); font-size: 0.92rem; color: var(--ink); line-height: 1.5; margin-bottom: 0.7rem; }
+.caption { font-family: var(--sans); font-size: 0.74rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
+.caption strong { color: var(--ink); }
 
-/* ── DOIS MECANISMOS ── */
-.mec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-.mec-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.9rem;
-  background: var(--card);
+/* ── DOIS MECANISMOS (empilhado, com régua) ── */
+.cols { display: flex; flex-direction: column; }
+.col { padding: 0.7rem 0; border-top: 1px solid var(--rule-soft); }
+.col:first-child { padding-top: 0; border-top: none; }
+.col h3 {
+  font-family: var(--sans);
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+  display: flex; align-items: center; gap: 0.45rem;
 }
-.mec-card h3 {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.4rem;
-}
-.mec-card h3.contencao { color: #16a34a; }
-.mec-card h3.silencio  { color: #b45309; }
-.mec-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
-.mec-note {
-  margin-top: 0.6rem;
-  font-size: 0.78rem;
-  color: var(--muted);
-  background: #f9fafb;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.6rem 0.8rem;
-  line-height: 1.5;
-}
+.col h3 .sq { width: 9px; height: 9px; flex-shrink: 0; }
+.col h3 .sq.b { background: var(--blue); }
+.col h3 .sq.r { background: var(--red); }
+.col p { font-family: var(--serif); font-size: 0.88rem; line-height: 1.5; color: #2a2a2a; }
 
 /* ── COMPONENTES (lista numerada) ── */
-.components { list-style: none; counter-reset: comp; display: flex; flex-direction: column; gap: 0.5rem; }
-.components li {
-  counter-increment: comp;
+.steps { list-style: none; }
+.steps li {
   position: relative;
-  padding: 0.7rem 0.85rem 0.7rem 2.5rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--card);
-  font-size: 0.83rem;
-  color: var(--muted);
-  line-height: 1.45;
+  padding: 0.6rem 0 0.6rem 2.1rem;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--serif); font-size: 0.88rem; line-height: 1.5; color: #2a2a2a;
 }
-.components li::before {
+.steps li:first-child { border-top: none; }
+.steps li strong { color: var(--ink); }
+.steps li::before {
+  counter-increment: comp;
   content: counter(comp);
   position: absolute;
-  left: 0.7rem; top: 0.7rem;
-  width: 1.3rem; height: 1.3rem;
-  background: var(--primary);
-  color: #fff;
-  border-radius: 50%;
-  font-size: 0.72rem; font-weight: 700;
+  left: 0; top: 0.62rem;
+  width: 1.4rem; height: 1.4rem;
+  background: var(--red); color: #fff;
+  font-family: var(--sans); font-size: 0.74rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-.components li strong { color: var(--text); }
+.steps { counter-reset: comp; }
 
-/* ── DESIGN NOTE ── */
-.design-note {
-  font-size: 0.76rem; color: var(--muted); line-height: 1.5;
-  background: #f9fafb; border: 1px solid var(--border); border-radius: 8px;
-  padding: 0.55rem 0.8rem; margin-bottom: 0.9rem;
-}
-.design-note strong { color: var(--primary); }
+/* ── GRÁFICO (cartão estilo Economist) ── */
+.chart { background: var(--chart-bg); padding: 0.9rem 1rem 0.85rem; margin-bottom: 0.7rem; }
+.chart .tag { margin-bottom: 0.6rem; }
+.chart .ct { font-family: var(--sans); font-weight: 700; font-size: 0.92rem; color: var(--ink); line-height: 1.25; }
+.chart .cs { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+.chart .src { font-family: var(--sans); font-size: 0.64rem; color: var(--light); margin-top: 0.7rem; letter-spacing: 0.01em; }
+.cnote { font-family: var(--serif); font-size: 0.84rem; color: #3a3a3a; line-height: 1.5; margin-top: 0.65rem; }
 
-/* ── GROUP LABEL (dentro de resultados) ── */
-.group-label { font-size: 0.74rem; font-weight: 700; color: var(--red); margin: 0.2rem 0 0.5rem; }
-.group-label.upp { color: var(--green); }
+.figs { display: flex; gap: 1.1rem; margin-top: 0.75rem; }
+.fig { flex: 1; }
+.fig .v { font-family: var(--sans); font-weight: 800; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; }
+.fig .v.red { color: var(--red); }
+.fig .v.blue { color: var(--blue); }
+.fig .v.grey { color: var(--muted); }
+.fig .k { font-family: var(--sans); font-size: 0.7rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.3; }
 
-/* ── NUMBERS GRID ── */
-.numbers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-.num-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.85rem 0.9rem;
-  text-align: center;
-}
-.num-card .big {
-  font-size: 1.9rem;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.num-card .big.red     { color: var(--red); }
-.num-card .big.green   { color: var(--green); }
-.num-card .big.neutral { color: var(--muted); }
-.num-card .num-label   { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.35; }
+/* ── BARRAS (razão SIM/ISP) ── */
+.bars { display: flex; align-items: flex-end; justify-content: space-around; gap: 0.5rem; margin-top: 0.9rem; border-bottom: 1px solid var(--light); padding-bottom: 0; }
+.bcol { flex: 1; text-align: center; display: flex; flex-direction: column; justify-content: flex-end; }
+.bcol .bv { font-family: var(--sans); font-weight: 800; font-size: 1.25rem; color: var(--red); line-height: 1; margin-bottom: 0.3rem; }
+.bcol .bar { width: 58%; margin: 0 auto; background: var(--red); }
+.blabels { display: flex; justify-content: space-around; gap: 0.5rem; margin-top: 0.4rem; }
+.blabels span { flex: 1; text-align: center; font-family: var(--sans); font-size: 0.64rem; color: var(--muted); line-height: 1.2; }
 
-/* ── RATIO BOX ── */
-.ratio-box {
-  margin-top: 0.7rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
-}
-.ratio-title {
-  font-size: 0.68rem;
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.ratio-track {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.3rem;
-}
-.ratio-step { text-align: center; flex: 1; }
-.ratio-step .r-num { font-size: 1.5rem; font-weight: 900; color: var(--red); line-height: 1; }
-.ratio-step .r-sub { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
-.ratio-arrow { color: #d1d5db; font-size: 1.1rem; flex-shrink: 0; }
-.ratio-note  { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.6rem; line-height: 1.4; }
+/* ── DUPLA CONTABILIDADE (duas leituras) ── */
+.reads { display: flex; flex-direction: column; gap: 0.5rem; }
+.read { padding: 0.7rem 0.85rem; font-family: var(--serif); }
+.read .rt { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+.read p { font-style: italic; font-size: 0.88rem; line-height: 1.45; color: var(--ink); }
+.read.usual { background: #f2f2f2; border-left: 3px solid var(--light); }
+.read.usual .rt { color: var(--muted); }
+.read.g1 { background: var(--tint-blue); border-left: 3px solid var(--blue); }
+.read.g1 .rt { color: var(--blue); }
+.closer { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--ink); margin-top: 0.7rem; border-left: 4px solid var(--red); padding-left: 0.9rem; }
 
-/* ── READ CONTRAST (dupla contabilidade) ── */
-.read-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
-.read-card { border-radius: 10px; padding: 0.7rem 0.85rem; font-size: 0.82rem; line-height: 1.45; }
-.read-card.wrong { background: #fef2f2; border: 1px solid #fecaca; }
-.read-card.right { background: var(--green-bg); border: 1px solid var(--green-border); }
-.read-tag { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
-.read-card.wrong .read-tag { color: #b91c1c; }
-.read-card.right .read-tag { color: #15803d; }
-.read-card p { color: #374151; font-style: italic; }
-
-/* ── LITERATURE DELTA ── */
-.lit-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
-.lit-table th {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--muted);
-  text-align: left;
-  padding: 0.35rem 0.5rem;
-  border-bottom: 1px solid var(--border);
-  font-weight: 600;
-}
-.lit-table td {
-  padding: 0.4rem 0.5rem;
-  vertical-align: top;
-  border-bottom: 1px solid #f3f4f6;
-  color: #374151;
-  line-height: 1.35;
-}
-.lit-table tr:last-child td { border-bottom: none; }
-.lit-table td.who { font-weight: 600; color: var(--primary); white-space: nowrap; }
-.lit-gap {
-  margin-top: 0.6rem;
-  background: #fffbeb;
-  border: 1px solid var(--yellow-border);
-  border-radius: 8px;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.8rem;
-  color: #92400e;
-  line-height: 1.45;
-}
+/* ── TABELA (literatura) ── */
+.table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.78rem; }
+.table th { text-align: left; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 700; padding: 0 0.5rem 0.45rem 0; border-bottom: 2px solid var(--ink); }
+.table td { padding: 0.45rem 0.5rem 0.45rem 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: #333; line-height: 1.35; }
+.table td.who { font-family: var(--serif); font-weight: 700; color: var(--ink); white-space: nowrap; }
+.table tr:last-child td { border-bottom: none; }
+.gap { background: #f7f7f7; border-top: 2px solid var(--ink); padding: 0.75rem 0.85rem; margin-top: 0.6rem; font-family: var(--serif); font-size: 0.86rem; line-height: 1.5; color: #2a2a2a; }
+.gap strong { color: var(--ink); }
+.gap em { font-style: italic; }
 
 /* ── TRADE-OFF ── */
-.tradeoff {
-  background: #fffbeb;
-  border: 1px solid var(--yellow-border);
-  border-left: 4px solid #f59e0b;
-  border-radius: 0 10px 10px 0;
-  padding: 0.85rem 1rem;
-}
-.tradeoff p { font-size: 0.86rem; color: #713f12; line-height: 1.55; }
-.tradeoff-punch { margin-top: 0.6rem; font-weight: 700; color: #92400e; }
+.tradeoff { background: var(--tint-red); border-left: 4px solid var(--red); padding: 0.9rem 1rem; }
+.tradeoff p { font-family: var(--serif); font-size: 0.9rem; line-height: 1.5; color: #3a1110; }
+.tradeoff .punch { margin-top: 0.6rem; font-weight: 700; color: var(--ink); }
 
-/* ── EXTERNAL (Chicago) ── */
-.external {
-  display: flex; align-items: center; gap: 0.95rem;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 0.9rem 1rem;
-}
-.ext-num { font-size: 1.95rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; }
-.ext-body { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
-.ext-body strong { color: var(--primary); }
+/* ── VALIDADE EXTERNA (Chicago) ── */
+.external { display: flex; align-items: center; gap: 1rem; background: var(--chart-bg); padding: 0.95rem 1rem; }
+.ext-num { font-family: var(--sans); font-size: 2.1rem; font-weight: 800; color: var(--red); line-height: 1; flex-shrink: 0; letter-spacing: -0.02em; }
+.ext-body { font-family: var(--serif); font-size: 0.86rem; color: #2a2a2a; line-height: 1.45; }
+.ext-body strong { color: var(--ink); }
 
 /* ── CHECKLIST ── */
-.checklist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-.checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.65rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  font-size: 0.88rem;
-}
-.checklist li.done    { background: var(--green-bg); border-color: var(--green-border); }
-.checklist li.active  { background: var(--blue-bg);  border-color: var(--blue-border);  }
-.checklist li.waiting { background: var(--yellow-bg); border-color: var(--yellow-border); }
-.check-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 1px; }
-.check-body { flex: 1; }
-.check-desc { display: block; }
-.check-owner {
-  display: inline-block;
-  margin-top: 0.2rem;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
+.todo { list-style: none; }
+.todo li { display: flex; gap: 0.65rem; padding: 0.6rem 0; border-top: 1px solid var(--rule-soft); font-family: var(--serif); font-size: 0.9rem; }
+.todo li:first-child { border-top: none; }
+.todo .mk { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; flex-shrink: 0; width: 1.1rem; text-align: center; line-height: 1.5; }
+.todo li.done .mk { color: var(--muted); }
+.todo li.active .mk { color: var(--red); }
+.todo li.wait .mk { color: var(--light); }
+.todo .body { flex: 1; }
+.todo li.done .body { color: var(--muted); }
+.todo li.active .body { font-weight: 700; }
+.todo .owner { display: block; font-family: var(--sans); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-top: 0.15rem; }
+.todo li.active .owner { color: var(--red); }
 
-/* ── TIMELINE ── */
+/* ── LINHA DO TEMPO ── */
 .timeline { display: flex; flex-direction: column; }
-.tl-item { display: flex; align-items: stretch; }
-.tl-left { display: flex; flex-direction: column; align-items: center; width: 2.5rem; flex-shrink: 0; }
-.tl-dot {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--border);
-  flex-shrink: 0;
-  margin-top: 0.85rem;
-  z-index: 1;
-}
-.tl-dot.done { background: var(--green); }
-.tl-dot.now  { background: var(--accent); box-shadow: 0 0 0 3px #bfdbfe; }
-.tl-dot.next { background: var(--border); }
-.tl-line { width: 2px; flex: 1; background: var(--border); margin: 0 auto; }
-.tl-line.done { background: #86efac; }
-.tl-content { flex: 1; padding: 0.6rem 0 0.6rem 0.7rem; }
-.tl-date { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.tl-desc { font-size: 0.88rem; color: var(--text); margin-top: 0.1rem; }
-.tl-item.current .tl-desc { font-weight: 700; color: var(--accent); }
+.tl-item { display: flex; }
+.tl-left { display: flex; flex-direction: column; align-items: center; width: 1.6rem; flex-shrink: 0; }
+.tl-dot { width: 11px; height: 11px; background: var(--rule-soft); flex-shrink: 0; margin-top: 0.8rem; }
+.tl-dot.done { background: var(--ink); }
+.tl-dot.now { background: var(--red); box-shadow: 0 0 0 3px var(--tint-red); }
+.tl-line { width: 2px; flex: 1; background: var(--rule-soft); }
+.tl-content { flex: 1; padding: 0.6rem 0 0.7rem 0.7rem; }
+.tl-date { font-family: var(--sans); font-size: 0.66rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.tl-desc { font-family: var(--serif); font-size: 0.9rem; color: var(--ink); margin-top: 0.1rem; }
+.tl-item.current .tl-desc { font-weight: 700; color: var(--red); }
 
 /* ── FOOTER ── */
-footer { text-align: center; font-size: 0.72rem; color: #d1d5db; padding: 0.5rem 0 2.5rem; }
+footer { border-top: 2px solid var(--ink); margin-top: 1.5rem; padding: 0.75rem 0 2.6rem; font-family: var(--sans); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════
      ÁREA DE ATUALIZAÇÃO — o que muda com frequência:
-     • Status geral: badge-andamento (trocar texto/cor se mudar de fase)
-     • Tarefas (seção "Próximos passos"): trocar classe da <li>
-       waiting → active → done, e o ícone ⏳ → 🔄 → ✅
-     • Pontos da "Linha do tempo": classe do .tl-dot (done/now/next)
-     • Números: seção "Resultados principais" (cards e razão SIM/ISP)
+     • Status: .kicker-row no header (texto/cor)
+     • Tarefas (.todo): trocar classe da <li> entre
+       wait → active → done, e a marca ○ → ● → ✓
+     • Linha do tempo: classe do .tl-dot (done / now / sem classe)
+     • Números: seção "Resultados" (.fig .v e as barras)
      • Data no rodapé
      ═══════════════════════════════════════════ -->
 
 <header>
-  <div class="badge badge-andamento">
-    <span class="badge-dot"></span>
-    Em andamento
-  </div>
-  <h1>Quem pode violentar?<br>Como ordens criminais moldam a violência contra a mulher</h1>
-  <div class="meta">
-    Igor Novaes Lins (UnB) &amp; Bárbara Maia (TCE-RN)<br>
-    Destino: <strong>Governance</strong> · Working Paper v3 PT
-  </div>
+  <div class="tag"></div>
+  <div class="kicker-row"><span class="dot"></span> Pesquisa em andamento · Rio de Janeiro</div>
+  <h1>Quem pode violentar?</h1>
+  <p class="deck">Como ordens criminais moldam a violência contra a mulher</p>
+  <p class="byline">Igor Novaes Lins (UnB) &amp; Bárbara Maia (TCE-RN)</p>
+  <p class="byline-sub">Working paper v3 · destino <strong>Governance</strong></p>
 </header>
-
-<hr>
+<div class="rule-strong"></div>
 
 <!-- ── CONCEITO CENTRAL ── -->
 <section>
-  <div class="section-label">Conceito central</div>
-  <p class="callout">
-    "O crime se torna juiz doméstico ao custo de ser substituto do Estado."
-  </p>
-  <div class="mec-note" style="margin-top:0.6rem">
+  <div class="kicker">Conceito central</div>
+  <p class="pull">O crime se torna juiz doméstico ao custo de ser substituto do Estado.</p>
+  <p class="note">
     Governança doméstica criminal: a autoridade criminal estendida ao domínio privado.
-    A milícia arbitra o conflito conjugal e proíbe a denúncia formal.
-    Não é controle territorial (opera no espaço público). Não é ordem criminal genérica
-    (opera sobre rivais). É <strong>poder sobre o íntimo</strong>.
-  </div>
+    A milícia arbitra o conflito doméstico e proíbe a denúncia formal. O controle territorial
+    governa a rua. A ordem entre grupos armados governa os rivais. Esta é
+    <strong>a ordem criminal dentro de casa</strong>.
+  </p>
 </section>
 
 <!-- ── DOIS MECANISMOS ── -->
 <section>
-  <div class="section-label">Dois mecanismos simultâneos</div>
-  <div class="mec-grid">
-    <div class="mec-card">
-      <h3 class="contencao">Contenção</h3>
-      <p>Reduz a violência conjugal de fato. Enquanto o crime governa, as tentativas de feminicídio ficam baixas. Arbitra o conflito e pune o agressor dentro de sua jurisdição moral.</p>
+  <div class="kicker">Dois mecanismos simultâneos</div>
+  <div class="cols">
+    <div class="col">
+      <h3><span class="sq b"></span> Contenção</h3>
+      <p>Reduz a violência doméstica de fato. Enquanto o crime governa, as tentativas de feminicídio ficam baixas. Arbitra o conflito e pune o agressor dentro de sua jurisdição moral.</p>
     </div>
-    <div class="mec-card">
-      <h3 class="silencio">Silenciamento</h3>
+    <div class="col">
+      <h3><span class="sq r"></span> Silenciamento</h3>
       <p>Bloqueia o canal estatal de denúncia. Recorrer à delegacia tem custo social ou físico. A vítima leva a queixa ao crime, que ocupa o lugar do Estado.</p>
     </div>
   </div>
-  <div class="mec-note">
-    Os dois operam juntos: conter exige que o crime seja juiz,
-    e ser juiz exige que o Estado não esteja. Não há contenção sem silenciamento.
-  </div>
+  <p class="note">
+    Os dois operam juntos: conter exige que o crime seja juiz, e ser juiz exige ocupar o
+    lugar do Estado. Conter e silenciar são uma coisa só.
+  </p>
 </section>
 
 <!-- ── OS TRÊS COMPONENTES ── -->
 <section>
-  <div class="section-label">Os três componentes</div>
-  <p class="lead-line">Três condições precisam estar presentes ao mesmo tempo.</p>
-  <ol class="components">
+  <div class="kicker">Os três componentes</div>
+  <p class="lead">Três condições precisam estar presentes ao mesmo tempo.</p>
+  <ol class="steps">
     <li><strong>Autoridade reconhecida.</strong> O grupo arbitra o conflito doméstico porque a comunidade já o reconhece como instância, antes de cada caso.</li>
     <li><strong>Canal estatal substituído.</strong> Recorrer à delegacia tem custo social ou físico. A vítima leva a queixa ao grupo armado, que ocupa o lugar do Estado.</li>
     <li><strong>Sanção ao agressor.</strong> Quando arbitra o caso, o grupo pune dentro da própria jurisdição moral.</li>
   </ol>
-  <div class="mec-note">
-    Os três juntos formam governança doméstica criminal. Só o segundo é captura do canal. Só o terceiro é vingança privada.
-  </div>
+  <p class="note">
+    Os três juntos formam governança doméstica criminal. Só o segundo é captura do canal.
+    Só o terceiro é vingança privada.
+  </p>
 </section>
 
 <!-- ── O MECANISMO: COLAPSO LIBERADOR ── -->
 <section>
-  <div class="section-label">O mecanismo: colapso liberador</div>
-  <p class="frame-text">
+  <div class="kicker">O mecanismo: colapso liberador</div>
+  <p class="frame">
     A ordem miliciana contém violência enquanto governa. O custo dessa contenção fica
     invisível até a liderança cair. Quando Carlinhos, Ecko e Zinho saem de cena, a
     violência represada transborda.
   </p>
-  <p class="callout">
-    "O colapso não cria violência: libera o que estava represado."
-  </p>
+  <p class="pull">O colapso não cria violência: libera o que estava represado.</p>
 </section>
 
 <!-- ── RESULTADOS ── -->
 <section>
-  <div class="section-label">Resultados principais</div>
-  <div class="design-note">
+  <div class="kicker">Resultados principais</div>
+  <p class="caption">
     <strong>Desenho:</strong> painel de 138 CISPs × 2016–2024 (1.236 observações).
-    DiD escalonado com 3 rupturas da Liga da Justiça como choques:
-    Carlinhos (2017), Ecko (2021), Zinho (2023).
-  </div>
+    DiD escalonado com 3 rupturas da Liga da Justiça como choques: Carlinhos (2017),
+    Ecko (2021), Zinho (2023).
+  </p>
 
-  <div class="group-label">Ruptura de liderança libera a violência contida</div>
-  <div class="numbers-grid">
-    <div class="num-card">
-      <div class="big red">+60,2%</div>
-      <div class="num-label">Tentativas de feminicídio pós-ruptura (p&lt;0,001)</div>
-    </div>
-    <div class="num-card">
-      <div class="big red">+33,1%</div>
-      <div class="num-label">Óbitos femininos no SIM pós-ruptura (p&lt;0,001)</div>
-    </div>
-  </div>
-  <div class="mec-note">
-    O efeito é específico da violência de gênero. Homicídio doloso, usado como placebo,
-    fica sem efeito (n.s.).
-  </div>
-
-  <div class="group-label upp">Entrada do Estado (UPP) desinibe o registro</div>
-  <div class="numbers-grid">
-    <div class="num-card">
-      <div class="big green">+57%</div>
-      <div class="num-label">VCM registrada após UPP</div>
-    </div>
-    <div class="num-card">
-      <div class="big green">+21%</div>
-      <div class="num-label">Estupro registrado após UPP</div>
-    </div>
-  </div>
-  <div class="mec-note">
-    A denúncia aumenta sem que a violência mude. O evento já estava lá. Mudou a contabilidade.
-  </div>
-
-  <div class="ratio-box">
-    <div class="ratio-title">Mortes reais ÷ registros em delegacia (SIM / ISP)</div>
-    <div class="ratio-track">
-      <div class="ratio-step">
-        <div class="r-num">45</div>
-        <div class="r-sub">Pré-integração</div>
+  <div class="chart">
+    <div class="tag"></div>
+    <div class="ct">Ruptura de liderança libera a violência contida</div>
+    <div class="cs">Variação pós-ruptura · DiD escalonado</div>
+    <div class="figs">
+      <div class="fig">
+        <div class="v red">+60,2%</div>
+        <div class="k">Tentativas de feminicídio (p&lt;0,001)</div>
       </div>
-      <div class="ratio-arrow">→</div>
-      <div class="ratio-step">
-        <div class="r-num">113</div>
-        <div class="r-sub">Integração</div>
-      </div>
-      <div class="ratio-arrow">→</div>
-      <div class="ratio-step">
-        <div class="r-num">187</div>
-        <div class="r-sub">Consolidada</div>
+      <div class="fig">
+        <div class="v red">+33,1%</div>
+        <div class="k">Óbitos femininos no SIM (p&lt;0,001)</div>
       </div>
     </div>
-    <div class="ratio-note">
-      Quanto maior a razão, mais mortes ficam fora dos registros.<br>
-      A milícia integrada é quem mais captura o canal formal.
+    <p class="cnote">
+      O efeito se concentra na violência de gênero. Homicídio doloso, usado como placebo,
+      permanece estável (n.s.).
+    </p>
+    <div class="src">Fonte: ISP-RJ; DATASUS/SIM</div>
+  </div>
+
+  <div class="chart">
+    <div class="tag"></div>
+    <div class="ct">Entrada do Estado (UPP) desinibe o registro</div>
+    <div class="cs">Variação pós-instalação de UPP</div>
+    <div class="figs">
+      <div class="fig">
+        <div class="v blue">+57%</div>
+        <div class="k">VCM registrada</div>
+      </div>
+      <div class="fig">
+        <div class="v blue">+21%</div>
+        <div class="k">Estupro registrado</div>
+      </div>
     </div>
+    <p class="cnote">
+      A denúncia aumenta e a violência permanece. O evento já estava lá. Mudou a contabilidade.
+    </p>
+    <div class="src">Fonte: ISP-RJ</div>
+  </div>
+
+  <div class="chart">
+    <div class="tag"></div>
+    <div class="ct">Mortes reais por registro em delegacia</div>
+    <div class="cs">Razão SIM / ISP, por fase de integração miliciana</div>
+    <div class="bars">
+      <div class="bcol"><div class="bv">45</div><div class="bar" style="height:26px"></div></div>
+      <div class="bcol"><div class="bv">113</div><div class="bar" style="height:66px"></div></div>
+      <div class="bcol"><div class="bv">187</div><div class="bar" style="height:110px"></div></div>
+    </div>
+    <div class="blabels">
+      <span>Pré-integração</span>
+      <span>Integração</span>
+      <span>Consolidada</span>
+    </div>
+    <p class="cnote">
+      Quanto maior a razão, mais mortes ficam fora dos registros. A milícia integrada é
+      quem mais captura o canal formal.
+    </p>
+    <div class="src">Fonte: DATASUS/SIM; ISP-RJ</div>
   </div>
 </section>
 
-<!-- ── COMO LER OS DADOS (dupla contabilidade) ── -->
+<!-- ── COMO LER OS DADOS ── -->
 <section>
-  <div class="section-label">Como ler os dados</div>
-  <p class="frame-text">
-    Duas contabilidades correm ao mesmo tempo: o que a delegacia registra (ISP)
-    e o que o DATASUS conta em mortes (SIM).
+  <div class="kicker">Como ler os dados</div>
+  <p class="frame">
+    Duas contabilidades correm ao mesmo tempo: o que a delegacia registra (ISP) e o que
+    o DATASUS conta em mortes (SIM).
   </p>
-  <div class="read-grid">
-    <div class="read-card wrong">
-      <div class="read-tag">Leitura usual</div>
+  <div class="reads">
+    <div class="read usual">
+      <div class="rt">Leitura usual</div>
       <p>"ISP-VCM caiu 30%. A política funcionou."</p>
     </div>
-    <div class="read-card right">
-      <div class="read-tag">Leitura de G1</div>
-      <p>"ISP-VCM caiu 30%, óbito feminino no SIM não se moveu. O silenciamento aumentou."</p>
+    <div class="read g1">
+      <div class="rt">Leitura de G1</div>
+      <p>"ISP-VCM caiu 30%, óbito feminino no SIM seguiu igual. O silenciamento aumentou."</p>
     </div>
   </div>
-  <div class="ratio-note" style="font-style:italic; margin-top:0.6rem">
-    A divergência entre as duas não é erro a corrigir. É o objeto a estudar.
-  </div>
+  <p class="closer">A divergência entre as duas não é erro a corrigir. É o objeto a estudar.</p>
 </section>
 
 <!-- ── POSICIONAMENTO NA LITERATURA ── -->
 <section>
-  <div class="section-label">O que a literatura deixa de fora</div>
-  <table class="lit-table">
+  <div class="kicker">O que a literatura deixa de fora</div>
+  <table class="table">
     <thead>
       <tr>
         <th>Literatura</th>
         <th>Foco</th>
-        <th>O que deixa de fora</th>
+        <th>Deixa de fora</th>
       </tr>
     </thead>
     <tbody>
@@ -521,28 +420,28 @@ footer { text-align: center; font-size: 0.72rem; color: #d1d5db; padding: 0.5rem
       <tr>
         <td class="who">Sociologia da família</td>
         <td>Patriarcado e instituições formais</td>
-        <td>Crime como regulador, não ameaça</td>
+        <td>Crime como regulador doméstico</td>
       </tr>
     </tbody>
   </table>
-  <div class="lit-gap">
-    <strong>Lacuna preenchida:</strong> organizações criminais como <em>instituições de regulação doméstica</em>,
-    com autoridade reconhecida localmente para arbitrar o conflito conjugal e impor sanção.
-    Governança privatizada do privado.
+  <div class="gap">
+    <strong>Lacuna preenchida:</strong> organizações criminais como <em>instituições de regulação
+    doméstica</em>, com autoridade reconhecida localmente para arbitrar o conflito doméstico e
+    impor sanção. Governança privatizada do privado.
   </div>
 </section>
 
 <!-- ── O TRADE-OFF ── -->
 <section>
-  <div class="section-label">O trade-off (a parte desconfortável)</div>
+  <div class="kicker">O trade-off — a parte desconfortável</div>
   <div class="tradeoff">
     <p>
       A ordem miliciana captura a política local e contém a violência letal dentro de casa
       ao mesmo tempo. Dissolver essa ordem sem um substituto institucional no lugar
       (delegacia da mulher, CRAS) faz o feminicídio subir no curto prazo.
     </p>
-    <p class="tradeoff-punch">
-      Reconhecer o trade-off não absolve o crime. Aponta o que falta antes da pacificação:
+    <p class="punch">
+      O trade-off é estrutural. Aponta o que a pacificação precisa trazer junto:
       uma rede de proteção no território.
     </p>
   </div>
@@ -550,124 +449,88 @@ footer { text-align: center; font-size: 0.72rem; color: #d1d5db; padding: 0.5rem
 
 <!-- ── VALIDADE EXTERNA: CHICAGO ── -->
 <section>
-  <div class="section-label">Validade externa</div>
+  <div class="kicker">Validade externa</div>
   <div class="external">
     <div class="ext-num">+62%</div>
     <div class="ext-body">
-      <strong>Mesmo padrão em Chicago (G2).</strong> Depois da fragmentação das gangues
-      que se seguiu ao caso Laquan McDonald, as vítimas mulheres por tiro subiram 62%.
-      A lógica de ordem e colapso se repete fora do Rio.
+      <strong>Mesmo padrão em Chicago (G2).</strong> Depois da fragmentação das gangues que
+      se seguiu ao caso Laquan McDonald, as vítimas mulheres por tiro subiram 62%. A lógica
+      de ordem e colapso se repete fora do Rio.
     </div>
   </div>
 </section>
 
 <!-- ── PRÓXIMOS PASSOS ── -->
 <section>
-  <div class="section-label">Próximos passos</div>
-  <ul class="checklist">
+  <div class="kicker">Próximos passos</div>
+  <ul class="todo">
     <li class="done">
-      <span class="check-icon">✅</span>
-      <div class="check-body">
-        <span class="check-desc">Working Paper v3 PT completo</span>
-        <span class="check-owner">Igor + Bárbara</span>
-      </div>
+      <span class="mk">✓</span>
+      <div class="body">Working Paper v3 PT completo<span class="owner">Igor + Bárbara</span></div>
     </li>
     <li class="done">
-      <span class="check-icon">✅</span>
-      <div class="check-body">
-        <span class="check-desc">Painel de dados — 138 CISPs × 2016–2024</span>
-        <span class="check-owner">Igor</span>
-      </div>
+      <span class="mk">✓</span>
+      <div class="body">Painel de dados — 138 CISPs × 2016–2024<span class="owner">Igor</span></div>
     </li>
     <li class="done">
-      <span class="check-icon">✅</span>
-      <div class="check-body">
-        <span class="check-desc">3 experimentos naturais — rupturas Liga da Justiça</span>
-        <span class="check-owner">Igor</span>
-      </div>
+      <span class="mk">✓</span>
+      <div class="body">3 experimentos naturais — rupturas Liga da Justiça<span class="owner">Igor</span></div>
     </li>
     <li class="active">
-      <span class="check-icon">🔄</span>
-      <div class="check-body">
-        <span class="check-desc">Revisão teórica e seção de discussão</span>
-        <span class="check-owner">Igor</span>
-      </div>
+      <span class="mk">●</span>
+      <div class="body">Revisão teórica e seção de discussão<span class="owner">Igor</span></div>
     </li>
-    <li class="waiting">
-      <span class="check-icon">⏳</span>
-      <div class="check-body">
-        <span class="check-desc">Revisão final do manuscrito</span>
-        <span class="check-owner">Igor + Bárbara</span>
-      </div>
+    <li class="wait">
+      <span class="mk">○</span>
+      <div class="body">Revisão final do manuscrito<span class="owner">Igor + Bárbara</span></div>
     </li>
-    <li class="waiting">
-      <span class="check-icon">⏳</span>
-      <div class="check-body">
-        <span class="check-desc">Tradução para inglês</span>
-        <span class="check-owner">Igor</span>
-      </div>
+    <li class="wait">
+      <span class="mk">○</span>
+      <div class="body">Tradução para inglês<span class="owner">Igor</span></div>
     </li>
-    <li class="waiting">
-      <span class="check-icon">⏳</span>
-      <div class="check-body">
-        <span class="check-desc">Submissão ao Governance</span>
-        <span class="check-owner">Igor</span>
-      </div>
+    <li class="wait">
+      <span class="mk">○</span>
+      <div class="body">Submissão ao Governance<span class="owner">Igor</span></div>
     </li>
   </ul>
 </section>
 
 <!-- ── LINHA DO TEMPO ── -->
 <section>
-  <div class="section-label">Linha do tempo</div>
+  <div class="kicker">Linha do tempo</div>
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-left">
-        <div class="tl-dot done"></div>
-        <div class="tl-line done"></div>
-      </div>
+      <div class="tl-left"><div class="tl-dot done"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-date">2024</div>
         <div class="tl-desc">Coleta de dados, painel 138 CISPs</div>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-left">
-        <div class="tl-dot done"></div>
-        <div class="tl-line done"></div>
-      </div>
+      <div class="tl-left"><div class="tl-dot done"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-date">2025</div>
         <div class="tl-desc">Working Paper v3 PT finalizado</div>
       </div>
     </div>
     <div class="tl-item current">
-      <div class="tl-left">
-        <div class="tl-dot now"></div>
-        <div class="tl-line"></div>
-      </div>
+      <div class="tl-left"><div class="tl-dot now"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-date">Jun–Ago 2026</div>
         <div class="tl-desc">Revisão teórica + revisão final com Bárbara</div>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-left">
-        <div class="tl-dot next"></div>
-        <div class="tl-line"></div>
-      </div>
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-date">Set 2026</div>
         <div class="tl-desc">Tradução EN + submissão ao Governance</div>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-left">
-        <div class="tl-dot next"></div>
-        <div class="tl-line" style="background:transparent"></div>
-      </div>
+      <div class="tl-left"><div class="tl-dot"></div></div>
       <div class="tl-content">
-        <div class="tl-date">Pós defesa</div>
+        <div class="tl-date">Pós-defesa</div>
         <div class="tl-desc">Defesa UnB jul/2026 → submissão liberada</div>
       </div>
     </div>
@@ -675,7 +538,7 @@ footer { text-align: center; font-size: 0.72rem; color: #d1d5db; padding: 0.5rem
 </section>
 
 <footer>
-  Atualizado em maio&nbsp;2026 · G1 Working Paper
+  Atualizado em maio 2026 · G1 working paper
 </footer>
 
 </body>
