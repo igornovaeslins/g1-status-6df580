@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quem pode violentar? Como ordens criminais moldam a violência contra a mulher</title>
+<style>
+:root {
+  --primary: #1e3a5f;
+  --accent: #2563eb;
+  --green: #16a34a;
+  --red: #dc2626;
+  --yellow-bg: #fef9c3;
+  --yellow-border: #fde047;
+  --green-bg: #f0fdf4;
+  --green-border: #86efac;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --text: #111827;
+  --muted: #6b7280;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── HEADER ── */
+header { padding: 1.5rem 0 0.75rem; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.9rem;
+}
+.badge-andamento { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.8s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+.meta { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+.meta strong { color: var(--primary); font-weight: 600; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 1.1rem 0; }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.7rem;
+}
+section { margin-bottom: 1.6rem; }
+
+/* ── CALLOUT / CITAÇÃO ── */
+.callout {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: #1e3a5f;
+  border-left: 3px solid var(--accent);
+  padding: 0.65rem 0.9rem;
+  background: var(--blue-bg);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.65;
+}
+
+/* ── FRAME TEXT / LEAD ── */
+.lead-line { font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 0.7rem; }
+.frame-text { font-size: 0.9rem; color: #374151; line-height: 1.6; margin-bottom: 0.7rem; }
+
+/* ── DOIS MECANISMOS ── */
+.mec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.mec-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem;
+  background: var(--card);
+}
+.mec-card h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+.mec-card h3.contencao { color: #16a34a; }
+.mec-card h3.silencio  { color: #b45309; }
+.mec-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
+.mec-note {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  line-height: 1.5;
+}
+
+/* ── COMPONENTES (lista numerada) ── */
+.components { list-style: none; counter-reset: comp; display: flex; flex-direction: column; gap: 0.5rem; }
+.components li {
+  counter-increment: comp;
+  position: relative;
+  padding: 0.7rem 0.85rem 0.7rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.components li::before {
+  content: counter(comp);
+  position: absolute;
+  left: 0.7rem; top: 0.7rem;
+  width: 1.3rem; height: 1.3rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.components li strong { color: var(--text); }
+
+/* ── DESIGN NOTE ── */
+.design-note {
+  font-size: 0.76rem; color: var(--muted); line-height: 1.5;
+  background: #f9fafb; border: 1px solid var(--border); border-radius: 8px;
+  padding: 0.55rem 0.8rem; margin-bottom: 0.9rem;
+}
+.design-note strong { color: var(--primary); }
+
+/* ── GROUP LABEL (dentro de resultados) ── */
+.group-label { font-size: 0.74rem; font-weight: 700; color: var(--red); margin: 0.2rem 0 0.5rem; }
+.group-label.upp { color: var(--green); }
+
+/* ── NUMBERS GRID ── */
+.numbers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.num-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 0.9rem;
+  text-align: center;
+}
+.num-card .big {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.num-card .big.red     { color: var(--red); }
+.num-card .big.green   { color: var(--green); }
+.num-card .big.neutral { color: var(--muted); }
+.num-card .num-label   { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.35; }
+
+/* ── RATIO BOX ── */
+.ratio-box {
+  margin-top: 0.7rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+.ratio-title {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ratio-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+.ratio-step { text-align: center; flex: 1; }
+.ratio-step .r-num { font-size: 1.5rem; font-weight: 900; color: var(--red); line-height: 1; }
+.ratio-step .r-sub { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+.ratio-arrow { color: #d1d5db; font-size: 1.1rem; flex-shrink: 0; }
+.ratio-note  { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.6rem; line-height: 1.4; }
+
+/* ── READ CONTRAST (dupla contabilidade) ── */
+.read-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+.read-card { border-radius: 10px; padding: 0.7rem 0.85rem; font-size: 0.82rem; line-height: 1.45; }
+.read-card.wrong { background: #fef2f2; border: 1px solid #fecaca; }
+.read-card.right { background: var(--green-bg); border: 1px solid var(--green-border); }
+.read-tag { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+.read-card.wrong .read-tag { color: #b91c1c; }
+.read-card.right .read-tag { color: #15803d; }
+.read-card p { color: #374151; font-style: italic; }
+
+/* ── LITERATURE DELTA ── */
+.lit-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.lit-table th {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+.lit-table td {
+  padding: 0.4rem 0.5rem;
+  vertical-align: top;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  line-height: 1.35;
+}
+.lit-table tr:last-child td { border-bottom: none; }
+.lit-table td.who { font-weight: 600; color: var(--primary); white-space: nowrap; }
+.lit-gap {
+  margin-top: 0.6rem;
+  background: #fffbeb;
+  border: 1px solid var(--yellow-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.8rem;
+  color: #92400e;
+  line-height: 1.45;
+}
+
+/* ── TRADE-OFF ── */
+.tradeoff {
+  background: #fffbeb;
+  border: 1px solid var(--yellow-border);
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1rem;
+}
+.tradeoff p { font-size: 0.86rem; color: #713f12; line-height: 1.55; }
+.tradeoff-punch { margin-top: 0.6rem; font-weight: 700; color: #92400e; }
+
+/* ── EXTERNAL (Chicago) ── */
+.external {
+  display: flex; align-items: center; gap: 0.95rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 0.9rem 1rem;
+}
+.ext-num { font-size: 1.95rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; }
+.ext-body { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
+.ext-body strong { color: var(--primary); }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.88rem;
+}
+.checklist li.done    { background: var(--green-bg); border-color: var(--green-border); }
+.checklist li.active  { background: var(--blue-bg);  border-color: var(--blue-border);  }
+.checklist li.waiting { background: var(--yellow-bg); border-color: var(--yellow-border); }
+.check-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 1px; }
+.check-body { flex: 1; }
+.check-desc { display: block; }
+.check-owner {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── TIMELINE ── */
+.timeline { display: flex; flex-direction: column; }
+.tl-item { display: flex; align-items: stretch; }
+.tl-left { display: flex; flex-direction: column; align-items: center; width: 2.5rem; flex-shrink: 0; }
+.tl-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+  margin-top: 0.85rem;
+  z-index: 1;
+}
+.tl-dot.done { background: var(--green); }
+.tl-dot.now  { background: var(--accent); box-shadow: 0 0 0 3px #bfdbfe; }
+.tl-dot.next { background: var(--border); }
+.tl-line { width: 2px; flex: 1; background: var(--border); margin: 0 auto; }
+.tl-line.done { background: #86efac; }
+.tl-content { flex: 1; padding: 0.6rem 0 0.6rem 0.7rem; }
+.tl-date { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.tl-desc { font-size: 0.88rem; color: var(--text); margin-top: 0.1rem; }
+.tl-item.current .tl-desc { font-weight: 700; color: var(--accent); }
+
+/* ── FOOTER ── */
+footer { text-align: center; font-size: 0.72rem; color: #d1d5db; padding: 0.5rem 0 2.5rem; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     ÁREA DE ATUALIZAÇÃO — o que muda com frequência:
+     • Status geral: badge-andamento (trocar texto/cor se mudar de fase)
+     • Tarefas (seção "Próximos passos"): trocar classe da <li>
+       waiting → active → done, e o ícone ⏳ → 🔄 → ✅
+     • Pontos da "Linha do tempo": classe do .tl-dot (done/now/next)
+     • Números: seção "Resultados principais" (cards e razão SIM/ISP)
+     • Data no rodapé
+     ═══════════════════════════════════════════ -->
+
+<header>
+  <div class="badge badge-andamento">
+    <span class="badge-dot"></span>
+    Em andamento
+  </div>
+  <h1>Quem pode violentar?<br>Como ordens criminais moldam a violência contra a mulher</h1>
+  <div class="meta">
+    Igor Novaes Lins (UnB) &amp; Bárbara Maia (TCE-RN)<br>
+    Destino: <strong>Governance</strong> · Working Paper v3 PT
+  </div>
+</header>
+
+<hr>
+
+<!-- ── CONCEITO CENTRAL ── -->
+<section>
+  <div class="section-label">Conceito central</div>
+  <p class="callout">
+    "O crime se torna juiz doméstico ao custo de ser substituto do Estado."
+  </p>
+  <div class="mec-note" style="margin-top:0.6rem">
+    Governança doméstica criminal: extensão da autoridade criminal sobre o domínio privado.
+    Regula a violência conjugal, media o conflito, proíbe a denúncia formal.
+    Não é controle territorial (opera no espaço público). Não é ordem criminal genérica
+    (opera sobre rivais). É <strong>poder sobre o íntimo</strong>.
+  </div>
+</section>
+
+<!-- ── DOIS MECANISMOS ── -->
+<section>
+  <div class="section-label">Dois mecanismos simultâneos</div>
+  <div class="mec-grid">
+    <div class="mec-card">
+      <h3 class="contencao">Contenção</h3>
+      <p>Reduz a violência conjugal real, não só o registro. O crime arbitra o conflito e pune o agressor dentro de sua jurisdição moral.</p>
+    </div>
+    <div class="mec-card">
+      <h3 class="silencio">Silenciamento</h3>
+      <p>Bloqueia o canal estatal de denúncia. Recorrer à delegacia tem custo social ou físico. A vítima leva a queixa ao crime, que ocupa o lugar do Estado.</p>
+    </div>
+  </div>
+  <div class="mec-note">
+    Os dois operam juntos e dependem um do outro: conter exige que o crime seja juiz,
+    e ser juiz exige que o Estado não esteja. Não há contenção sem silenciamento.
+  </div>
+</section>
+
+<!-- ── OS TRÊS COMPONENTES ── -->
+<section>
+  <div class="section-label">Os três componentes</div>
+  <p class="lead-line">Três condições precisam estar presentes ao mesmo tempo.</p>
+  <ol class="components">
+    <li><strong>Autoridade reconhecida.</strong> O grupo arbitra o conflito doméstico porque a comunidade já o reconhece como instância, antes de cada caso.</li>
+    <li><strong>Canal estatal substituído.</strong> Recorrer à delegacia tem custo social ou físico. A vítima leva a queixa ao grupo armado, que ocupa o lugar do Estado.</li>
+    <li><strong>Sanção ao agressor.</strong> Quando arbitra o caso, o grupo pune dentro da própria jurisdição moral.</li>
+  </ol>
+  <div class="mec-note">
+    Os três juntos formam governança doméstica criminal. Só o segundo é captura do canal. Só o terceiro é vingança privada.
+  </div>
+</section>
+
+<!-- ── O MECANISMO: COLAPSO LIBERADOR ── -->
+<section>
+  <div class="section-label">O mecanismo: colapso liberador</div>
+  <p class="frame-text">
+    A ordem miliciana contém violência enquanto governa. O custo dessa contenção fica
+    invisível até a liderança cair. Quando Carlinhos, Ecko e Zinho saem de cena, a
+    violência represada transborda.
+  </p>
+  <p class="callout">
+    "O colapso não cria violência: libera o que estava represado."
+  </p>
+</section>
+
+<!-- ── RESULTADOS ── -->
+<section>
+  <div class="section-label">Resultados principais</div>
+  <div class="design-note">
+    <strong>Desenho:</strong> painel de 138 CISPs × 2016–2024 (1.236 observações).
+    DiD escalonado com 3 rupturas da Liga da Justiça como choques:
+    Carlinhos (2017), Ecko (2021), Zinho (2023).
+  </div>
+
+  <div class="group-label">Ruptura de liderança liberta a violência contida</div>
+  <div class="numbers-grid">
+    <div class="num-card">
+      <div class="big red">+60,2%</div>
+      <div class="num-label">Tentativas de feminicídio pós-ruptura (p&lt;0,001)</div>
+    </div>
+    <div class="num-card">
+      <div class="big red">+33,1%</div>
+      <div class="num-label">Óbitos femininos no SIM pós-ruptura (p&lt;0,001)</div>
+    </div>
+  </div>
+  <div class="mec-note">
+    O choque atinge a violência de gênero. Homicídio doloso, usado como placebo,
+    fica sem efeito (n.s.) e confirma que o mecanismo é específico.
+  </div>
+
+  <div class="group-label upp">Entrada do Estado (UPP) desinibe o registro</div>
+  <div class="numbers-grid">
+    <div class="num-card">
+      <div class="big green">+57%</div>
+      <div class="num-label">VCM registrada após UPP</div>
+    </div>
+    <div class="num-card">
+      <div class="big green">+21%</div>
+      <div class="num-label">Estupro registrado após UPP</div>
+    </div>
+  </div>
+  <div class="mec-note">
+    A denúncia aumenta sem que a violência mude. O evento já estava lá. Mudou a contabilidade.
+  </div>
+
+  <div class="ratio-box">
+    <div class="ratio-title">Mortes reais ÷ registros em delegacia (SIM / ISP)</div>
+    <div class="ratio-track">
+      <div class="ratio-step">
+        <div class="r-num">45</div>
+        <div class="r-sub">Pré-integração</div>
+      </div>
+      <div class="ratio-arrow">→</div>
+      <div class="ratio-step">
+        <div class="r-num">113</div>
+        <div class="r-sub">Integração</div>
+      </div>
+      <div class="ratio-arrow">→</div>
+      <div class="ratio-step">
+        <div class="r-num">187</div>
+        <div class="r-sub">Consolidada</div>
+      </div>
+    </div>
+    <div class="ratio-note">
+      Quanto maior a razão, mais mortes acontecem sem aparecer nos registros.<br>
+      Quanto mais integrada a milícia, mais o canal formal é capturado.
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO LER OS DADOS (dupla contabilidade) ── -->
+<section>
+  <div class="section-label">Como ler os dados</div>
+  <p class="frame-text">
+    Duas contabilidades correm ao mesmo tempo: o que a delegacia registra (ISP)
+    e o que o DATASUS conta em mortes (SIM).
+  </p>
+  <div class="read-grid">
+    <div class="read-card wrong">
+      <div class="read-tag">Leitura usual</div>
+      <p>"ISP-VCM caiu 30%. A política funcionou."</p>
+    </div>
+    <div class="read-card right">
+      <div class="read-tag">Leitura de G1</div>
+      <p>"ISP-VCM caiu 30%, óbito feminino no SIM não se moveu. O silenciamento aumentou."</p>
+    </div>
+  </div>
+  <div class="ratio-note" style="font-style:italic; margin-top:0.6rem">
+    A divergência entre as duas não é erro a corrigir. É o objeto a estudar.
+  </div>
+</section>
+
+<!-- ── POSICIONAMENTO NA LITERATURA ── -->
+<section>
+  <div class="section-label">O que a literatura não faz (e este paper faz)</div>
+  <table class="lit-table">
+    <thead>
+      <tr>
+        <th>Literatura</th>
+        <th>Foco</th>
+        <th>O que deixa de fora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="who">Arias, Lessing</td>
+        <td>Regulação de crime organizado (droga, território)</td>
+        <td>Domínio doméstico</td>
+      </tr>
+      <tr>
+        <td class="who">Soifer, Migdal</td>
+        <td>Alcance do Estado</td>
+        <td>Outro ator regulando o privado</td>
+      </tr>
+      <tr>
+        <td class="who">Sociologia da família</td>
+        <td>Patriarcado e instituições formais</td>
+        <td>Crime como regulador, não ameaça</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="lit-gap">
+    <strong>Lacuna preenchida:</strong> organizações criminais como <em>instituições de regulação doméstica</em>,
+    com autoridade reconhecida localmente para arbitrar o conflito conjugal e impor sanção.
+    Governança privatizada do privado.
+  </div>
+</section>
+
+<!-- ── O TRADE-OFF ── -->
+<section>
+  <div class="section-label">O trade-off (a parte desconfortável)</div>
+  <div class="tradeoff">
+    <p>
+      A ordem miliciana captura a política local e contém a violência letal dentro de casa
+      ao mesmo tempo. Dissolver essa ordem sem um substituto institucional no lugar
+      (delegacia da mulher, CRAS) faz o feminicídio subir no curto prazo.
+    </p>
+    <p class="tradeoff-punch">
+      Reconhecer o trade-off não absolve o crime. Aponta o que falta antes da pacificação:
+      uma rede de proteção no território.
+    </p>
+  </div>
+</section>
+
+<!-- ── VALIDADE EXTERNA: CHICAGO ── -->
+<section>
+  <div class="section-label">Validade externa</div>
+  <div class="external">
+    <div class="ext-num">+62%</div>
+    <div class="ext-body">
+      <strong>Mesmo padrão em Chicago (G2).</strong> Depois da fragmentação das gangues
+      que se seguiu ao caso Laquan McDonald, as vítimas mulheres por tiro subiram 62%.
+      A lógica de ordem e colapso se repete fora do Rio.
+    </div>
+  </div>
+</section>
+
+<!-- ── PRÓXIMOS PASSOS ── -->
+<section>
+  <div class="section-label">Próximos passos</div>
+  <ul class="checklist">
+    <li class="done">
+      <span class="check-icon">✅</span>
+      <div class="check-body">
+        <span class="check-desc">Working Paper v3 PT completo</span>
+        <span class="check-owner">Igor + Bárbara</span>
+      </div>
+    </li>
+    <li class="done">
+      <span class="check-icon">✅</span>
+      <div class="check-body">
+        <span class="check-desc">Painel de dados — 138 CISPs × 2016–2024</span>
+        <span class="check-owner">Igor</span>
+      </div>
+    </li>
+    <li class="done">
+      <span class="check-icon">✅</span>
+      <div class="check-body">
+        <span class="check-desc">3 experimentos naturais — rupturas Liga da Justiça</span>
+        <span class="check-owner">Igor</span>
+      </div>
+    </li>
+    <li class="active">
+      <span class="check-icon">🔄</span>
+      <div class="check-body">
+        <span class="check-desc">Revisão teórica e seção de discussão</span>
+        <span class="check-owner">Igor</span>
+      </div>
+    </li>
+    <li class="waiting">
+      <span class="check-icon">⏳</span>
+      <div class="check-body">
+        <span class="check-desc">Revisão final do manuscrito</span>
+        <span class="check-owner">Igor + Bárbara</span>
+      </div>
+    </li>
+    <li class="waiting">
+      <span class="check-icon">⏳</span>
+      <div class="check-body">
+        <span class="check-desc">Tradução para inglês</span>
+        <span class="check-owner">Igor</span>
+      </div>
+    </li>
+    <li class="waiting">
+      <span class="check-icon">⏳</span>
+      <div class="check-body">
+        <span class="check-desc">Submissão ao Governance</span>
+        <span class="check-owner">Igor</span>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ── LINHA DO TEMPO ── -->
+<section>
+  <div class="section-label">Linha do tempo</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot done"></div>
+        <div class="tl-line done"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date">2024</div>
+        <div class="tl-desc">Coleta de dados, painel 138 CISPs</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot done"></div>
+        <div class="tl-line done"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date">2025</div>
+        <div class="tl-desc">Working Paper v3 PT finalizado</div>
+      </div>
+    </div>
+    <div class="tl-item current">
+      <div class="tl-left">
+        <div class="tl-dot now"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date">Jun–Ago 2026</div>
+        <div class="tl-desc">Revisão teórica + revisão final com Bárbara</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot next"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date">Set 2026</div>
+        <div class="tl-desc">Tradução EN + submissão ao Governance</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot next"></div>
+        <div class="tl-line" style="background:transparent"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date">Pós defesa</div>
+        <div class="tl-desc">Defesa UnB jul/2026 → submissão liberada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Atualizado em maio&nbsp;2026 · G1 Working Paper
+</footer>
+
+</body>
+</html>
